@@ -2,7 +2,7 @@
 
 Eureka Service - Keeps track of IP-Address to service name mappings for microservice set.
 
-Gateway service - Forwards incoming requests to correct microservice based on root path and performs basic authentication.
+Gateway service - Forwards incoming requests to correct microservice based on root path and performs basic authentication by integrating with eureka registry.
 
 Register Service - Used for logging users in, out, and registering.
 
