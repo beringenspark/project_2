@@ -10,7 +10,7 @@ Customer Service - Used to update and delete customers.
 
 Product Service - Used to perform CRUD operations on Products. 
 
-Order Service - Submits orders for existing products and attempts to withdraw payment from the authneticated user's account by sending a request to Payment Service.
+Order Service - Manages orders and order submissions for existing products and attempts to withdraw payment from the authneticated user's account by sending a request to Payment Service.
 
 Payment Service - A downstream service of product service. Can submit payments (deduct from account balance) and refund payments (add to account balance). 
 
