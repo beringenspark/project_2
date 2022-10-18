@@ -1,0 +1,50 @@
+server:
+  port: 7000
+spring:
+  application:
+    name: gateway
+  cloud:
+    discovery:
+      enabled: true
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: registerModule
+          uri: lb://REGISTER
+          predicates:
+            - Path=/register/**
+        - id: customerModule
+          uri: lb://CUSTOMER
+          predicates:
+            - Path=/customer/**
+        - id: orderModule
+          uri: lb://ORDER
+          predicates:
+            - Path=/order/**
+          filters:
+            - AuthenticationFilter
+        - id: productModule
+          uri: lb://product
+          filters:
+            - AuthenticationFilter
+          predicates:
+            - Path=/product/**
+      default-filters:
+        - StripPrefix=1
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    username: admin
+    password: admin1234
+    url: jdbc:oracle:thin://@database-1.cx1w7aebhl7k.us-west-2.rds.amazonaws.com:1521/orcl
+  jpa:
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.OracleDialect
+eureka:
+  client:
+    register-with-eureka: true
+    registry-fetch-interval-seconds: 1
+    service-url:
+        defaultZone: http://localhost:8761/eureka

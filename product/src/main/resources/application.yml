@@ -1,0 +1,19 @@
+server:
+  port: 7500
+spring:
+  application:
+    name: product
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    username: admin
+    password: admin1234
+    url: jdbc:oracle:thin:/@database-1.cx1w7aebhl7k.us-west-2.rds.amazonaws.com:1521/orcl
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.OracleDialect
+eureka:
+  client:
+    register-with-eureka: true
+    registry-fetch-interval-seconds: 1
+    enabled: true
